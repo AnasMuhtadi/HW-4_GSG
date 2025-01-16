@@ -5,11 +5,9 @@ import { IStudent } from './types';
 import Student from './components/student/student.component';
 import AddForm from './components/add-form/add-form.component';
 import useLocalStorage from './hooks/local-storage.hook';
-import reducer from './hooks/reducer';
+import reducer from './state/reducer';
 
 function App() {
-  const [studentsList, setStudentsList] = useState<IStudent[]>([]);
-  const [totalAbsents, setTotalAbsents] = useState(0);
   const lastStdRef = useRef<HTMLDivElement>(null);
   const [state, dispatch] = useReducer(reducer, { students: [] ,totalAbsents : 0})
   const { storedData } = useLocalStorage(state.students, 'students-list');
